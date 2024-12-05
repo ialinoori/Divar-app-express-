@@ -12,15 +12,22 @@ class AuthController {
     try {
       const { mobile } = req.body;
       await this.#service.sendOTP(mobile);
-      return {
+      return res.json({
         message: AuthMessage.SendOtpSuccessfully,
-      };
+      });
     } catch (error) {
       next(error);
     }
   }
+  
   async checkOTP(req, res, next) {
     try {
+      const { mobile,code } = req.body;
+     const token =  await this.#service.checkOTP(mobile,code);
+      return res.json({
+        message: AuthMessage.LoginSuccessfully,
+        token
+      });
     } catch (error) {
       next(error);
     }
