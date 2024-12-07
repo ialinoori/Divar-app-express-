@@ -4,6 +4,7 @@ const swaggerConfig = require("./src/config/swagger.config");
 const mainRouter = require("./src/app.routes");
 const NotFoundHandler = require("./src/common/exeption/not-found.hanlder");
 const AllexectionHandler = require("./src/common/exeption/all-exection.handler");
+const cookieParser = require("cookie-parser")
 dotenv.config();
 
 async function main() {
@@ -13,6 +14,7 @@ async function main() {
   require("./src/config/mongodb.config");
   app.use(express.json())
   app.use(express.urlencoded({extended:true}))
+  app.use(cookieParser(process.env.COOKIE_SECRET_KEY))
   swaggerConfig(app);
   app.use(mainRouter);
   NotFoundHandler(app)
