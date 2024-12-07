@@ -1,8 +1,8 @@
 /**
  * @swagger
  * tags:
- *   - name: Auth
- *     description: Implementation of Auth module
+ *   - name: User
+ *     description: Implementation of User module
  */
 /**
  * @swagger
@@ -29,19 +29,11 @@
 
 /**
  * @swagger
- * /auth/send-otp:
- *   post:
- *     summary: Login with one-time password
+ * /user/whoami:
+ *   get:
+ *     summary: get user Info
  *     tags:
- *       - Auth
- *     requestBody:
- *       content:
- *         application/x-www-form-urlencoded:
- *           schema:
- *             $ref: "#/components/schemas/sendOTP"
- *         application/json:
- *           schema:
- *             $ref: "#/components/schemas/sendOTP"
+ *       - User
  *     responses:
  *       200:
  *         description: Success
@@ -72,21 +64,3 @@
  *       404:
  *         description: OTP record not found
  */
-
-/**
- * @swagger
- * /auth/logout:
- *   get:
- *     summary: logout user from app
- *     tags:
- *       - Auth
- *     responses:
- *       200:
- *         description: OTP verified successfully
- *       400:
- *         description: Invalid OTP or mobile number
- *       404:
- *         description: OTP record not found
- */
-
-

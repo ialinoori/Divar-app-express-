@@ -8,9 +8,7 @@ const AuthMessage = {
   Login:"login on your account",
   LoginAgain:"please login again",
   Unauthorized:"unauthorized",
-  NotFoundAccount:"no any account found",
-  LogoutSucessfully:"logout successfully"
-
+  NotFoundAccount:"no any account found"
 
 
 

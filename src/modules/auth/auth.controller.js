@@ -1,3 +1,4 @@
+const CookiesName = require("../../common/constant/cookie.enum");
 const NodeEnv = require("../../common/constant/env.enum");
 const { AuthMessage } = require("./auth.messages");
 const authService = require("./auth.service");
@@ -20,24 +21,29 @@ class AuthController {
       next(error);
     }
   }
-  
+
   async checkOTP(req, res, next) {
     try {
-      const { mobile,code } = req.body;
-     const token =  await this.#service.checkOTP(mobile,code);
-    return  res.cookie("access_token",token,{
-      httpOnly:true,
-      secure:process.env.NODE_ENV === NodeEnv.production
-
-     }).status(200).json({
-        message: AuthMessage.LoginSuccessfully,
-      });
+      const { mobile, code } = req.body;
+      const token = await this.#service.checkOTP(mobile, code);
+      return res
+        .cookie("access_token", token, {
+          httpOnly: true,
+          secure: process.env.NODE_ENV === NodeEnv.production,
+        })
+        .status(200)
+        .json({
+          message: AuthMessage.LoginSuccessfully,
+        });
     } catch (error) {
       next(error);
     }
   }
   async logout(req, res, next) {
     try {
+      return res.clearCookie(CookiesName.AccessToken).status(200).json({
+        message: AuthMessage.LogoutSucessfully,
+      });
     } catch (error) {
       next(error);
     }
