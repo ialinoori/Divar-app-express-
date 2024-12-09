@@ -5,8 +5,7 @@ const router = Router();
 
 router.post("/send-otp", authController.sendOTP);
 router.post("/check-otp", authController.checkOTP);
-router.get("/logout",Authrization, authController.logout);
-
+router.get("/logout", Authrization, authController.logout);
 
 module.exports = {
   AuthRouter: router,

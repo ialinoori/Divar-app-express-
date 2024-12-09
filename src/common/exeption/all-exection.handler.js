@@ -1,5 +1,6 @@
 function AllexectionHandler(app) {
   app.use((err, req, res, next) => {
+    
     const status = err?.status ?? err.statusCode ?? err?.code;
     if (!status || isNaN(+status) || status > 511 || status < 200) {
       status = 500;

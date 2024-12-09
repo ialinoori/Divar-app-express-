@@ -18,7 +18,7 @@ async function main() {
   swaggerConfig(app);
   app.use(mainRouter);
   NotFoundHandler(app)
-  AllexectionHandler(app)
+  // AllexectionHandler(app)
   app.listen(3000, () => {
     console.log(`server:http://localhost:${port}`);
   });
