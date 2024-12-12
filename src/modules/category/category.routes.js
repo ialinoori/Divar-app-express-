@@ -5,6 +5,8 @@ const router  = Router()
 
 router.post("/",categoryController.create)
 router.get("/",categoryController.find)
+router.delete("/:id",categoryController.remove)
+
 
 
 module.exports = {

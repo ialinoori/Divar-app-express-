@@ -59,3 +59,20 @@
  *       400:
  *         description: Invalid input
  */
+/**
+ * @swagger
+ * /category/{id}:
+ *   delete:
+ *     summary: get categories
+ *     tags:
+ *       - Category
+ *     parameters:
+ *       -    in: path
+ *            name: id
+ * 
+ *     responses:
+ *       200:
+ *         description: Success
+ *       400:
+ *         description: Invalid input
+ */
