@@ -18,6 +18,8 @@ class CategoryController {
         message: CategoryMessage.created,
       });
     } catch (error) {
+      console.log(error);
+
       next(error);
     }
   }
@@ -26,6 +28,7 @@ class CategoryController {
       const categories = await this.#service.find();
       return res.json(categories);
     } catch (error) {
+      
       next(error);
     }
   }

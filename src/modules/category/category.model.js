@@ -9,7 +9,7 @@ const CategorySchema = new Schema(
     parents: {
       type: [Types.ObjectId],
       ref: "Category",
-      required: false,
+      required: false, 
       default: [],
     },
   },
@@ -28,5 +28,5 @@ function autoPopulate(next) {
 
 CategorySchema.pre("find", autoPopulate).pre("findOne",autoPopulate)
 
-const CategotyModel = model("category", CategorySchema);
+const CategotyModel = model("Category", CategorySchema);
 module.exports = CategotyModel;
