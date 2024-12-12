@@ -6,6 +6,7 @@ const OptionSchema = new Schema({
   type: { type: String, enum: ["number", "string", "array", "boolean"] },
   enum: { type: Array, default: [] },
   guid: { type: String, required: false },
+  required: { type: Boolean, required: true },
   category: { type: Types.ObjectId, ref: "Category", required: true },
 });
 
