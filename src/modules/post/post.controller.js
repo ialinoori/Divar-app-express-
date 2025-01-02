@@ -5,7 +5,7 @@ const { PostMessage } = require("./post.message");
 
 class PostController {
   #service;
-  constructor() {
+  constructor() {  
     autoBind(this);
     this.#service = postService;
   }

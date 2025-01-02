@@ -1,5 +1,6 @@
 const autoBind = require("auto-bind");
 const PostModel = require("./post.model");
+const OptionModel = require("../option/option.model");
 
 class PostService {
   #model; 

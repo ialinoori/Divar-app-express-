@@ -18,7 +18,7 @@ class OptionService {
     this.#categoryModel = CategotyModel;
     this.#categoryService = categoryService;
   }
-  async create(OptionDto) {
+  async  create(OptionDto) {
     const category = await this.#categoryService.checkExistById(
       OptionDto.category
     );
