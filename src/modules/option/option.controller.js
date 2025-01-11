@@ -91,10 +91,9 @@ class OptionController {
   async findByCategorySlug(req, res, next) {
     try {
         const { slug } = req.params;
-       await this.#service.findByCategoryslug(slug);
-        return res.json({
-            message:"delete sucessfully"
-        });
+        const options = await this.#service.findByCategoryslug(slug);
+        return res.json(options);
+
     } catch (error) {
       next(error);
     }

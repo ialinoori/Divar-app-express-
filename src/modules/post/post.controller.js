@@ -13,23 +13,20 @@ class PostController {
   async create(req, res, next) {
     try {
       console.log(req.body);
-      const { title_post: title, description:content, lat, lng, category } = req.body;
+      const { title_post: title, des_post:content, category } = req.body;
       delete req.body["title_post"];
-      delete req.body["description"];
-      delete req.body["lat"];
-      delete req.body["lng"];
+      delete req.body["des_post"];
       delete req.body["category"];
       const options = req.body
 
       await this.#service.create({
         title,
         content,
-        cordinate: [lat, lng],
         category: new Types.ObjectId(category),
         images: [],
         options
       });
-      return res.statsu(200).json({
+      return res.status(200).json({
         message:PostMessage.created
       })
     } catch (error) {
