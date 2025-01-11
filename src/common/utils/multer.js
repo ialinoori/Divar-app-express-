@@ -9,7 +9,7 @@ const storage = multer.diskStorage({
         cb(null,"public/upload")
     },
     filename:function(req,file,cb){
-        const whiteListFormat = ["image/png","image/jpg","image/jpeg","image/webp"],
+        const whiteListFormat = ["image/png","image/jpg","image/jpeg","image/webp"]
         if(whiteListFormat.includes(file.mimetype)){
             const format = path.extname(file.originalname)
             const filename = new Date().getTime().toString() + format;
