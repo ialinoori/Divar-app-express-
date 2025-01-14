@@ -1,9 +1,10 @@
 const autoBind = require("auto-bind");
 const PostModel = require("./post.model");
 const OptionModel = require("../option/option.model");
+const { isValidObjectId } = require("mongoose");
 
 class PostService {
-  #model; 
+  #model;
   #optionModel;
   constructor() {
     autoBind(this);
@@ -11,8 +12,14 @@ class PostService {
     this.#optionModel = OptionModel;
   }
 
-  async create(dto){
-    return await this.#model.create(dto)
+  async create(dto) {
+    return await this.#model.create(dto);
+  }
+
+  async find(userId) {
+    if (userId && isValidObjectId(userId)) {
+      return await this.#model.find({ userId });
+    }
   }
 }
 

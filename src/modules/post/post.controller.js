@@ -12,12 +12,9 @@ class PostController {
 
   async create(req, res, next) {
     try {
-      console.log(
-        "ssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
-        req?.files
-      );
+      const userId = req.user._id
+  
       const images = req?.files?.map((image) => image?.path?.slice(7));
-      console.log("imagesssss", images);
 
       const { title_post: title, des_post: content, category } = req.body;
       delete req.body["title_post"];
@@ -32,6 +29,7 @@ class PostController {
       }
 
       await this.#service.create({
+        userId,
         title,
         content,
         category: new Types.ObjectId(category),
@@ -47,8 +45,12 @@ class PostController {
       next(error);
     }
   }
-  async find(req, res, next) {
+  async findMyPosts(req, res, next) {
     try {
+      const userId = req.user._id
+      const posts = await this.#service.find(userId)
+      return res.json(posts);
+
     } catch (error) {
       next(error);
     }
