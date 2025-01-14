@@ -48,7 +48,8 @@ class PostController {
   async findMyPosts(req, res, next) {
     try {
       const userId = req.user._id
-      const posts = await this.#service.find(userId)
+      const { search } = req.query; 
+      const posts = await this.#service.find(userId, search); 
       return res.json(posts);
 
     } catch (error) {
@@ -57,6 +58,21 @@ class PostController {
   }
   async remove(req, res, next) {
     try {
+      const {id} = req.params
+      await this.#service.remove(id)
+      return res.json({message:"پست مورد نظر با موفقیت حذف گردید"});
+
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async showPost(req, res, next) {
+    try {
+      const {id} = req.params
+     const post =  await this.#service.showPost(id)
+      return res.json(post);
+
     } catch (error) {
       next(error);
     }

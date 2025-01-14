@@ -7,6 +7,10 @@ const router = Router();
 
 router.post("/create",Authrization,upload.array("images",10), postController.create);
 router.get("/my",Authrization, postController.findMyPosts);
+router.delete("/delete/:id", Authrization, postController.remove);
+router.get("/show/:id", Authrization, postController.showPost);
+
+
 
 
 module.exports = {

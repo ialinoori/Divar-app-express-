@@ -15,7 +15,7 @@ async function main() {
 
   const corsOptions = {
     origin: "http://localhost:3001",
-    methods: ["GET", "POST"],
+    methods: ["GET", "POST", "DELETE"],
     credentials: true,
   };
   app.use(cors(corsOptions));
